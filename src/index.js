@@ -18,14 +18,14 @@ searchBox.addEventListener(
   'input',
   _.debounce(event => {
     inputReturn(event);
-  }, 300)
+  }, DEBOUNCE_DELAY)
 );
 
 function inputReturn(event) {
   const inputData = event.target.value.trim();
   fetchCountries(inputData)
     .then(data => {
-      if (data.length < 9) {
+      if (data.length <= 10) {
         createarkup(data);
         // console.log('console log from then', data.length);
         return;
